@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { RevealLines, FadeUp, StaggerGrid, StaggerItem, Parallax } from '@/components/motion'
 import { ConceptsHeroGraphic } from '@/components/hero-graphics'
 import { AnimatedWatermark } from '@/components/animated-watermark'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Concepts — Layered',
@@ -278,6 +279,31 @@ export default function ConceptsPage() {
           </div>
         </section>
       ))}
+
+        {/* CTA */}
+      <section className="border-t">
+        <div className="mx-auto max-w-[1400px] px-5 py-20 text-center md:px-8 md:py-32">
+          <FadeUp>
+            <span className="rounded-full border px-3 py-1 text-label text-muted-foreground">
+              Next Step
+            </span>
+          </FadeUp>
+          <RevealLines
+            as="h2"
+            className="text-display mt-6 text-4xl uppercase md:text-7xl"
+            lines={['Track market data.', 'Real-time rates.']}
+          />
+          <FadeUp delay={0.25} className="mt-10">
+            <Link
+              href="/prices"
+              className="group inline-flex items-center gap-3 border border-foreground bg-foreground px-8 py-4 text-xs font-mono uppercase tracking-widest text-background hover:bg-transparent hover:text-foreground transition-all duration-300 rounded-none"
+            >
+              View live prices
+              <span className="transition-transform duration-300 group-hover:translate-x-1 font-sans">→</span>
+            </Link>
+          </FadeUp>
+        </div>
+      </section>
     </main>
   )
 }

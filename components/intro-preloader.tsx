@@ -47,19 +47,11 @@ export function IntroPreloader() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Check if preloader has already played this session to avoid annoying repeat visits
-    const hasPlayed = sessionStorage.getItem('preloader-played')
-    if (hasPlayed) {
-      setLoading(false)
-      return
-    }
-
     // Lock body scroll during preload loading
     document.body.style.overflow = 'hidden'
 
     const timer = setTimeout(() => {
       setLoading(false)
-      sessionStorage.setItem('preloader-played', 'true')
       document.body.style.overflow = ''
     }, 2800) // 2.8s total duration
 

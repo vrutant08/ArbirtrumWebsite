@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useId } from 'react'
 import { motion } from 'framer-motion'
 import { FadeUp, StaggerGrid, StaggerItem } from '@/components/motion'
 
@@ -86,7 +86,8 @@ function Sparkline({ data, positive }: { data: number[]; positive: boolean }) {
 
   const areaD = `${pathD} L ${width} ${height} L 0 ${height} Z`
   const color = positive ? 'var(--success)' : 'var(--destructive)'
-  const gradientId = `gradient-${positive ? 'up' : 'down'}-${Math.floor(Math.random() * 1000000)}`
+  const reactId = useId()
+  const gradientId = `gradient-${positive ? 'up' : 'down'}-${reactId.replace(/:/g, '')}`
 
   const areaVariants = {
     hidden: { opacity: 0 },
@@ -273,25 +274,24 @@ export function PriceDashboard() {
           </button>
       </FadeUp>
 
-      {/* Price cards */}
-      <StaggerGrid className="grid grid-cols-1 border-l border-t sm:grid-cols-2 lg:grid-cols-4">
+      <StaggerGrid className="grid grid-cols-1 border-l border-t border-neutral-800 sm:grid-cols-2 lg:grid-cols-4 bg-[#111111]">
         {coins.map((coin) => {
           const up = coin.change24h >= 0
           return (
             <StaggerItem
               key={coin.id}
-              className="group flex min-h-[280px] flex-col justify-between gap-6 border-b border-r p-6 transition-colors duration-500 hover:bg-foreground"
+              className="group flex min-h-[280px] flex-col justify-between gap-6 border-b border-r border-neutral-800 p-6 bg-[#111111] transition-colors duration-500 hover:bg-white hover:border-neutral-200"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h2 className="text-display text-2xl uppercase transition-colors duration-500 group-hover:text-background">
+                  <h2 className="text-display text-2xl uppercase transition-colors duration-500 text-white group-hover:text-foreground">
                     {coin.symbol}
                   </h2>
-                  <p className="text-sm text-muted-foreground transition-colors duration-500 group-hover:text-background/60">
+                  <p className="text-sm text-neutral-400 transition-colors duration-500 group-hover:text-muted-foreground">
                     {coin.name}
                   </p>
                 </div>
-                <span className="rounded-full border px-2.5 py-0.5 text-label text-muted-foreground transition-colors duration-500 group-hover:border-background/30 group-hover:text-background/60">
+                <span className="rounded-full border border-neutral-700 px-2.5 py-0.5 text-label text-neutral-400 transition-colors duration-500 group-hover:border-border group-hover:text-muted-foreground">
                   USD
                 </span>
               </div>
@@ -302,13 +302,13 @@ export function PriceDashboard() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <span className="font-mono text-3xl tracking-tight transition-colors duration-500 group-hover:text-background">
+                <span className="font-mono text-3xl tracking-tight transition-colors duration-500 text-white group-hover:text-foreground">
                   {formatPrice(coin.price)}
                 </span>
                 <span
                   className={`flex w-fit items-center gap-1.5 rounded-full px-2.5 py-0.5 font-mono text-xs ${
                     coin.price === 0
-                      ? 'bg-secondary text-muted-foreground'
+                      ? 'bg-neutral-800 text-neutral-400 group-hover:bg-secondary group-hover:text-muted-foreground'
                       : up
                         ? 'bg-success/10 text-success'
                         : 'bg-destructive/10 text-destructive'

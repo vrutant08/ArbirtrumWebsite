@@ -3,6 +3,7 @@ import { RevealLines, FadeUp, Parallax } from '@/components/motion'
 import { PriceDashboard } from '@/components/prices/price-dashboard'
 import { PricesHeroGraphic } from '@/components/hero-graphics'
 import { AnimatedWatermark } from '@/components/animated-watermark'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Live Prices — Layered',
@@ -103,6 +104,30 @@ export default function PricesPage() {
       <section>
         <div className="mx-auto max-w-[1400px] px-5 py-14 md:px-8 md:py-20">
           <PriceDashboard />
+        </div>
+      </section>
+      {/* CTA */}
+      <section className="border-t">
+        <div className="mx-auto max-w-[1400px] px-5 py-20 text-center md:px-8 md:py-32">
+          <FadeUp>
+            <span className="rounded-full border px-3 py-1 text-label text-muted-foreground">
+              Next Step
+            </span>
+          </FadeUp>
+          <RevealLines
+            as="h2"
+            className="text-display mt-6 text-4xl uppercase md:text-7xl"
+            lines={['Mine blocks.', 'Simulate the chain.']}
+          />
+          <FadeUp delay={0.25} className="mt-10">
+            <Link
+              href="/simulator"
+              className="group inline-flex items-center gap-3 border border-foreground bg-foreground px-8 py-4 text-xs font-mono uppercase tracking-widest text-background hover:bg-transparent hover:text-foreground transition-all duration-300 rounded-none"
+            >
+              Open block simulator
+              <span className="transition-transform duration-300 group-hover:translate-x-1 font-sans">→</span>
+            </Link>
+          </FadeUp>
         </div>
       </section>
     </main>

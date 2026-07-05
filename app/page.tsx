@@ -220,15 +220,15 @@ export default function HomePage() {
           <RevealLines
             as="h2"
             className="text-display mt-6 text-4xl uppercase md:text-7xl"
-            lines={["Don't just read it.", 'Mine it.']}
+            lines={['Unpack Web3.', 'Explore the concepts.']}
           />
           <FadeUp delay={0.25} className="mt-10">
             <Link
-              href="/simulator"
+              href="/concepts"
               className="group inline-flex items-center gap-3 border border-foreground bg-foreground px-8 py-4 text-xs font-mono uppercase tracking-widest text-background hover:bg-transparent hover:text-foreground transition-all duration-300 rounded-none"
             >
-              Open the block simulator
-              <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5 font-sans">↗</span>
+              Explore Web3 Concepts
+              <span className="transition-transform duration-300 group-hover:translate-x-1 font-sans">→</span>
             </Link>
           </FadeUp>
         </div>

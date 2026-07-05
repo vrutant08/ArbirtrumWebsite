@@ -39,7 +39,7 @@ export function SiteHeader() {
                 className={`group relative rounded-none border px-4 py-1.5 text-sm transition-colors duration-300 ${
                   active
                     ? 'border-foreground bg-foreground text-background'
-                    : 'border-transparent text-muted-foreground hover:border-border hover:text-foreground'
+                    : 'border-neutral-200 text-muted-foreground hover:border-border hover:text-foreground'
                 }`}
               >
                 <span className="text-label mr-1.5 text-[9px] opacity-50">
