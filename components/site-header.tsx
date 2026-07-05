@@ -36,7 +36,7 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 aria-current={active ? 'page' : undefined}
-                className={`group relative rounded-full border px-4 py-1.5 text-sm transition-colors duration-300 ${
+                className={`group relative rounded-none border px-4 py-1.5 text-sm transition-colors duration-300 ${
                   active
                     ? 'border-foreground bg-foreground text-background'
                     : 'border-transparent text-muted-foreground hover:border-border hover:text-foreground'

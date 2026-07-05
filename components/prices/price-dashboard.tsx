@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { motion } from 'framer-motion'
-import { FadeUp, StaggerGrid, StaggerItem, Magnetic } from '@/components/motion'
+import { FadeUp, StaggerGrid, StaggerItem } from '@/components/motion'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 
@@ -252,7 +252,6 @@ export function PriceDashboard() {
           </span>
         </div>
 
-        <Magnetic>
           <button
             type="button"
             onClick={fetchPrices}
@@ -263,17 +262,15 @@ export function PriceDashboard() {
               animate={refreshing ? { rotate: 360 } : { rotate: 0 }}
               transition={
                 refreshing
-                  ? { repeat: Infinity, duration: 0.8, ease: 'linear' }
-                  : { duration: 0.3 }
+                  ? { duration: 1, repeat: Infinity, ease: 'linear' }
+                  : { duration: 0.5 }
               }
               className="inline-block"
-              aria-hidden="true"
             >
               ↻
             </motion.span>
-            Refresh
+            Refresh rates
           </button>
-        </Magnetic>
       </FadeUp>
 
       {/* Price cards */}

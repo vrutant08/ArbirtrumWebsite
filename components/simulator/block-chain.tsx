@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
-import { Magnetic } from '@/components/motion'
 
 const DIFFICULTY = '00' // hash must start with this to be valid
 const GENESIS_PREV = '0'.repeat(64)
@@ -253,7 +252,6 @@ function BlockCard({
 
         {/* Mine */}
         <div className="mt-auto flex items-center justify-between gap-4 pt-2">
-          <Magnetic>
             <button
               type="button"
               onClick={onMine}
@@ -262,7 +260,6 @@ function BlockCard({
             >
               {block.mining ? 'Mining…' : 'Mine ⛏'}
             </button>
-          </Magnetic>
           <span className="font-mono text-xs text-muted-foreground">
             {block.mining
               ? `${block.attempts.toLocaleString()} attempts`

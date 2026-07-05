@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { Magnetic } from '@/components/motion'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 
@@ -81,24 +80,20 @@ export function Hero() {
             transition={{ duration: 0.9, ease: EASE, delay: 0.65 }}
             className="flex items-center gap-3"
           >
-            <Magnetic>
-              <Link
-                href="/concepts"
-                className="group inline-flex items-center gap-3 border border-foreground bg-foreground px-6 py-3.5 text-xs font-mono uppercase tracking-widest text-background hover:bg-transparent hover:text-foreground transition-all duration-300 rounded-none"
-              >
-                Explore concepts
-                <span className="transition-transform duration-300 group-hover:translate-x-1 font-sans">→</span>
-              </Link>
-            </Magnetic>
-            <Magnetic>
-              <Link
-                href="/simulator"
-                className="group inline-flex items-center gap-3 border border-foreground bg-transparent px-6 py-3.5 text-xs font-mono uppercase tracking-widest text-foreground hover:bg-foreground hover:text-background transition-all duration-300 rounded-none"
-              >
-                Mine a block
-                <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5 font-sans">↗</span>
-              </Link>
-            </Magnetic>
+            <Link
+              href="/concepts"
+              className="group inline-flex items-center gap-3 border border-foreground bg-foreground px-6 py-3.5 text-xs font-mono uppercase tracking-widest text-background hover:bg-transparent hover:text-foreground transition-all duration-300 rounded-none"
+            >
+              Explore concepts
+              <span className="transition-transform duration-300 group-hover:translate-x-1 font-sans">→</span>
+            </Link>
+            <Link
+              href="/simulator"
+              className="group inline-flex items-center gap-3 border border-foreground bg-transparent px-6 py-3.5 text-xs font-mono uppercase tracking-widest text-foreground hover:bg-foreground hover:text-background transition-all duration-300 rounded-none"
+            >
+              Mine a block
+              <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5 font-sans">↗</span>
+            </Link>
           </motion.div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import { LenisProvider } from '@/components/lenis-provider'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { CustomCursor } from '@/components/custom-cursor'
+import { IntroPreloader } from '@/components/intro-preloader'
 
 const grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -36,6 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`bg-background ${grotesk.variable} ${mono.variable}`}>
       <body className="antialiased">
+        <IntroPreloader />
         <CustomCursor />
         <LenisProvider>
           <SiteHeader />
