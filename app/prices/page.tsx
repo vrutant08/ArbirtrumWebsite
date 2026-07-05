@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
-import { RevealLines, FadeUp } from '@/components/motion'
+import { RevealLines, FadeUp, Parallax } from '@/components/motion'
 import { PriceDashboard } from '@/components/prices/price-dashboard'
 import { PricesHeroGraphic } from '@/components/hero-graphics'
+import { AnimatedWatermark } from '@/components/animated-watermark'
 
 export const metadata: Metadata = {
   title: 'Live Prices — Layered',
@@ -24,7 +25,15 @@ export default function PricesPage() {
   return (
     <main>
       <section className="relative overflow-hidden border-b">
-        <div className="relative mx-auto max-w-[1400px] px-5 py-16 md:px-8 md:py-24">
+        {/* Parallax watermark */}
+        <Parallax
+          amount={40}
+          className="pointer-events-none absolute inset-x-0 top-8 select-none"
+        >
+          <AnimatedWatermark text="Prices Prices" />
+        </Parallax>
+
+        <div className="relative mx-auto max-w-[1400px] px-5 pt-20 pb-16 md:px-8 md:pt-28 md:pb-24">
           <FadeUp>
             <span className="rounded-full border bg-background px-3 py-1 text-label text-muted-foreground">
               03 — Dashboard

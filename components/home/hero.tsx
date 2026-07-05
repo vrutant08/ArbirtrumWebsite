@@ -84,17 +84,19 @@ export function Hero() {
             <Magnetic>
               <Link
                 href="/concepts"
-                className="btn-wipe inline-flex items-center gap-2 rounded-full border border-foreground bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors"
+                className="group inline-flex items-center gap-3 border border-foreground bg-foreground px-6 py-3.5 text-xs font-mono uppercase tracking-widest text-background hover:bg-transparent hover:text-foreground transition-all duration-300 rounded-none"
               >
                 Explore concepts
+                <span className="transition-transform duration-300 group-hover:translate-x-1 font-sans">→</span>
               </Link>
             </Magnetic>
             <Magnetic>
               <Link
                 href="/simulator"
-                className="btn-wipe inline-flex items-center gap-2 rounded-full border border-foreground px-6 py-3 text-sm font-medium text-foreground transition-colors"
+                className="group inline-flex items-center gap-3 border border-foreground bg-transparent px-6 py-3.5 text-xs font-mono uppercase tracking-widest text-foreground hover:bg-foreground hover:text-background transition-all duration-300 rounded-none"
               >
-                Mine a block ↗
+                Mine a block
+                <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5 font-sans">↗</span>
               </Link>
             </Magnetic>
           </motion.div>

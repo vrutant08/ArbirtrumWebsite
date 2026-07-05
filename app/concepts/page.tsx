@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import { RevealLines, FadeUp, StaggerGrid, StaggerItem } from '@/components/motion'
+import { RevealLines, FadeUp, StaggerGrid, StaggerItem, Parallax } from '@/components/motion'
 import { ConceptsHeroGraphic } from '@/components/hero-graphics'
+import { AnimatedWatermark } from '@/components/animated-watermark'
 
 export const metadata: Metadata = {
   title: 'Concepts — Layered',
@@ -131,7 +132,15 @@ export default function ConceptsPage() {
     <main>
       {/* Page hero */}
       <section className="relative overflow-hidden border-b">
-        <div className="relative mx-auto max-w-[1400px] px-5 py-16 md:px-8 md:py-24">
+        {/* Parallax watermark */}
+        <Parallax
+          amount={40}
+          className="pointer-events-none absolute inset-x-0 top-8 select-none"
+        >
+          <AnimatedWatermark text="Concepts Concepts" />
+        </Parallax>
+
+        <div className="relative mx-auto max-w-[1400px] px-5 pt-20 pb-16 md:px-8 md:pt-28 md:pb-24">
           <FadeUp>
             <span className="rounded-full border bg-background px-3 py-1 text-label text-muted-foreground">
               02 — Reference

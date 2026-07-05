@@ -225,9 +225,10 @@ export default function HomePage() {
           <FadeUp delay={0.25} className="mt-10">
             <Link
               href="/simulator"
-              className="btn-wipe inline-flex items-center gap-2 rounded-full border border-foreground bg-foreground px-8 py-4 font-medium text-background transition-colors"
+              className="group inline-flex items-center gap-3 border border-foreground bg-foreground px-8 py-4 text-xs font-mono uppercase tracking-widest text-background hover:bg-transparent hover:text-foreground transition-all duration-300 rounded-none"
             >
-              Open the block simulator ↗
+              Open the block simulator
+              <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5 font-sans">↗</span>
             </Link>
           </FadeUp>
         </div>
