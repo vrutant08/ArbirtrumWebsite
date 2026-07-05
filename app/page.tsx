@@ -9,49 +9,51 @@ import {
 } from '@/components/motion'
 
 const MARQUEE_ITEMS = [
-  'Optimistic Rollups',
-  'EVM Equivalent',
-  'Lower Fees',
-  'Faster Finality',
-  'Ethereum Security',
+  'Arbitrum Builder Labs',
+  'Lampros DAO',
+  'Builder Pods',
+  'Web3 University',
   'Stylus / WASM',
+  'Rust Smart Contracts',
+  'AI-Assisted dApp Dev',
+  'SBT & NFT Certification',
 ]
 
 const FEATURES = [
   {
     index: '01',
-    title: 'Inherited security',
-    body: 'Arbitrum posts transaction data back to Ethereum, so every batch is ultimately secured by Ethereum itself — you never trade safety for speed.',
+    title: 'Web3 & Evolution',
+    body: 'Traced read-only Web1 (Doordarshan era) to platform-controlled Web2 data/currency, to Bitcoin & Ethereum self-sovereign networks.',
   },
   {
     index: '02',
-    title: 'Radically lower fees',
-    body: 'By executing transactions off-chain and settling in compressed batches, Arbitrum cuts gas costs by an order of magnitude versus mainnet.',
+    title: 'WASM Smart Contracts',
+    body: 'Explored self-executing agreements using Rust, Solidity, and Vyper, compiling low-level code directly to high-speed WebAssembly (WASM).',
   },
   {
     index: '03',
-    title: 'Full EVM equivalence',
-    body: 'Any contract, wallet, or tool built for Ethereum works on Arbitrum without modification. Developers ship the same code — it just runs cheaper.',
+    title: 'Arbitrum Stylus',
+    body: 'Analyzed Arbitrum EVM+ coequal virtual machine, allowing developers to write contracts in Rust for 100x speed and 100-500x cheaper memory on-chain.',
   },
   {
     index: '04',
-    title: 'Stylus & WASM',
-    body: 'Beyond Solidity, Arbitrum Stylus lets you write contracts in Rust, C, and C++ that compile to WebAssembly — faster and with cheaper memory.',
+    title: 'AI-Assisted Workflow',
+    body: 'Studied the Developer Shift from fragile "Vibe Coding" to guided engineering workflows using specialized context templates (Skills).',
   },
 ]
 
-const TRILEMMA = [
+const PROGRAM_OUTCOMES = [
   {
-    label: 'Scalability',
-    body: 'The ability to handle a large volume of transactions efficiently.',
+    label: 'What is a Pod?',
+    body: 'University-based Web3 communities created after Builder Labs to foster peer collaborative learning with Ethereum, Stylus, and Orbit.',
   },
   {
-    label: 'Decentralization',
-    body: 'Distributing control across a network, eliminating a central authority.',
+    label: 'Program Structure',
+    body: 'Groups of 10-12 active students per Pod, backed by faculty advisors and Lampros DAO mentors to design and build real-world on-chain projects.',
   },
   {
-    label: 'Security',
-    body: 'Essential for maintaining trust in the network.',
+    label: 'Showcase & Outcomes',
+    body: 'Demos and evaluation alongside Arbitrum DevRel at regional events in Mumbai, Ahmedabad, MP/Rajasthan for a ₹90,000 prize pool.',
   },
 ]
 
@@ -78,45 +80,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why Ethereum needed L2 */}
+      {/* Program overview */}
       <section className="border-b">
         <div className="mx-auto grid max-w-[1400px] grid-cols-1 md:grid-cols-2">
           <div className="border-b p-5 py-14 md:border-b-0 md:border-r md:p-12 md:py-24">
             <FadeUp>
               <span className="rounded-full border px-3 py-1 text-label text-muted-foreground">
-                The problem
+                Program Overview
               </span>
             </FadeUp>
             <RevealLines
               as="h2"
               className="text-display mt-6 text-4xl uppercase md:text-6xl"
-              lines={['Why Ethereum', 'needed Layer 2']}
+              lines={['Arbitrum', 'Builder Pods']}
             />
             <FadeUp delay={0.2}>
               <p className="mt-6 max-w-md leading-relaxed text-muted-foreground">
-                Ethereum is the world computer — but every node processes every
-                transaction. At peak demand, blockspace becomes scarce: fees
-                spike to tens of dollars and confirmations slow down. This is
-                the blockchain trilemma in action — you cannot maximize
-                scalability, decentralization, and security all at once on a
-                single layer.
+                The Arbitrum Builder Labs program, created by Lampros DAO, is designed to discover and nurture next-generation Web3 talent. The journey begins on-campus, introducing developers to blockchain scaling, smart contracts, and decentralized systems. Outstanding participants form university-based Builder Pods to transition from learners to active on-chain builders.
               </p>
             </FadeUp>
             <FadeUp delay={0.3}>
               <p className="mt-4 max-w-md leading-relaxed text-muted-foreground">
-                Layer 2 networks solve this by moving execution off-chain while
-                anchoring proofs and data back to Ethereum — keeping its
-                security, but multiplying its capacity.
+                Through continuous mentorship and collaborative project building, teams develop on-chain applications. Finalists earn permanent on-chain credentials via the Xcan Platform, including NFT certificates and Soul Bound Tokens (SBTs) for finalists and winners.
               </p>
             </FadeUp>
           </div>
 
           <StaggerGrid className="flex flex-col">
-            {TRILEMMA.map((item, i) => (
+            {PROGRAM_OUTCOMES.map((item, i) => (
               <StaggerItem
                 key={item.label}
                 className={`flex flex-1 flex-col justify-center gap-2 p-5 md:p-12 ${
-                  i < TRILEMMA.length - 1 ? 'border-b' : ''
+                  i < PROGRAM_OUTCOMES.length - 1 ? 'border-b' : ''
                 }`}
               >
                 <div className="flex items-baseline justify-between">
@@ -134,7 +129,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* What is Arbitrum */}
+      {/* Workshop session overview */}
       <section className="relative overflow-hidden border-b">
         <Parallax
           amount={40}
@@ -144,7 +139,7 @@ export default function HomePage() {
             aria-hidden="true"
             className="text-mega whitespace-nowrap text-center text-secondary"
           >
-            Arbitrum Arbitrum
+            Lampros Lampros
           </p>
         </Parallax>
 
@@ -152,34 +147,25 @@ export default function HomePage() {
           <div className="mx-auto max-w-2xl text-center">
             <FadeUp>
               <span className="rounded-full border bg-background px-3 py-1 text-label text-muted-foreground">
-                The solution
+                The Workshop
               </span>
             </FadeUp>
             <RevealLines
               as="h2"
               className="text-display mt-6 text-4xl uppercase md:text-6xl"
-              lines={['What is', 'Arbitrum?']}
+              lines={['Session', 'Overview']}
             />
             <FadeUp delay={0.2}>
               <p className="mt-6 text-pretty leading-relaxed text-muted-foreground">
-                Arbitrum is a Layer 2 scaling solution for Ethereum built on
-                Optimistic Rollup technology. It executes transactions on its
-                own fast chain, then rolls them up into compressed batches
-                posted to Ethereum. Transactions are assumed valid by default —
-                and anyone can challenge fraud during a dispute window — so
-                Arbitrum stays fast and cheap without giving up
-                Ethereum&apos;s security.
+                The seminar was a intensive workshop covering Web3 fundamentals and scaling. Session 01 focused on blockchain and L2 mechanics, Session 02 explored AI-Assisted dApp development (smart contracts using modern tools and deploying to testnets), Session 03 covered Builder Pod activation and opportunities, and Session 04 was an open Q&A with experts.
               </p>
             </FadeUp>
             <FadeUp delay={0.3}>
               <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
                 <span className="font-medium text-foreground">
-                  Real-world benefit:
+                  Practical Focus:
                 </span>{' '}
-                a token swap that costs $10–50 in gas on Ethereum mainnet
-                typically costs a few cents on Arbitrum — settling in seconds
-                instead of minutes, while remaining fully compatible with the
-                same wallets and contracts.
+                We studied the structure of Rust, mutability, ownership, borrowing, and references, comparing Rust structures to Javascript class definitions and impl blocks. We then explored EVM equivalence on Arbitrum Stylus and deployed code onto Arbitrum Sepolia.
               </p>
             </FadeUp>
           </div>
@@ -193,12 +179,11 @@ export default function HomePage() {
             <RevealLines
               as="h2"
               className="text-display text-4xl uppercase md:text-6xl"
-              lines={['Why it', 'matters']}
+              lines={['What We', 'Mastered']}
             />
             <FadeUp>
               <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-                Four properties that make Arbitrum the leading Layer 2 by total
-                value locked.
+                Four core domains that structured our technical learning during the builder seminar.
               </p>
             </FadeUp>
           </div>

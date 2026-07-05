@@ -26,7 +26,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.9 }}
           className="mb-6 flex flex-wrap items-center gap-2"
         >
-          {['Layer 2', 'Optimistic Rollups', 'Ethereum'].map((tag) => (
+          {['Lampros DAO', 'Builder Labs', 'Web3 & Stylus'].map((tag) => (
             <span
               key={tag}
               className="rounded-full border px-3 py-1 text-label text-muted-foreground"
@@ -46,7 +46,7 @@ export function Hero() {
                 animate={{ y: '0%' }}
                 transition={{ duration: 1, ease: EASE, delay: 0.1 }}
               >
-                Scaling
+                Builder
               </motion.span>
             </span>
             <span className="block overflow-hidden">
@@ -56,7 +56,7 @@ export function Hero() {
                 animate={{ y: '0%' }}
                 transition={{ duration: 1, ease: EASE, delay: 0.22 }}
               >
-                Ethereum<span className="text-accent">.</span>
+                Labs<span className="text-accent">.</span>
               </motion.span>
             </span>
           </h1>
@@ -70,9 +70,9 @@ export function Hero() {
             transition={{ duration: 0.9, ease: EASE, delay: 0.5 }}
             className="max-w-md text-pretty leading-relaxed text-muted-foreground"
           >
-            An educational deep-dive into Arbitrum and Layer 2 — why Ethereum
-            needed to scale, how rollups work, and what it means for the next
-            generation of the web.
+            Welcome to the official portal for the Arbitrum Builder Labs seminar by Lampros DAO. 
+            We explored Web3 evolution, compiled Rust contracts via Stylus, and activated 
+            university-based Builder Pods for real-world projects.
           </motion.p>
 
           <motion.div
