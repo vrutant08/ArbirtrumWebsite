@@ -24,7 +24,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 gap-8 py-10 md:grid-cols-3">
           <div className="flex flex-col gap-2">
             <span className="text-label text-muted-foreground">Built by</span>
-            <span className="text-lg font-medium">Your Name</span>
+            <span className="text-lg font-medium">Vrutant Panchal</span>
             <span className="text-sm text-muted-foreground">
               Arbitrum Builder Labs — Lampros DAO
             </span>
@@ -66,7 +66,7 @@ export function SiteFooter() {
 
         <div className="flex flex-col items-start justify-between gap-2 border-t py-5 text-xs text-muted-foreground md:flex-row md:items-center">
           <span>© 2026 Layered. An educational Web3 project.</span>
-          <span className="text-label">Built with AI assistance</span>
+          <span className="text-label"></span>
         </div>
       </div>
     </footer>
