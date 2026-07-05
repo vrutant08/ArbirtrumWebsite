@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { RevealLines, FadeUp, StaggerGrid, StaggerItem } from '@/components/motion'
+import { ConceptsHeroGraphic } from '@/components/hero-graphics'
 
 export const metadata: Metadata = {
   title: 'Concepts — Layered',
@@ -14,6 +15,17 @@ type Comparison = {
   left: { label: string; points: string[] }
   right: { label: string; points: string[] }
 }
+
+const HERO_TAGS = [
+  'Smart Contracts',
+  'Wallets',
+  'Public / Private Keys',
+  'dApps',
+  'Hashing',
+  'Decentralization',
+  'NFTs',
+  'DeFi',
+]
 
 const COMPARISONS: Comparison[] = [
   {
@@ -51,7 +63,7 @@ const COMPARISONS: Comparison[] = [
         'Purpose: decentralized digital money — a store of value',
         'Very limited scripting; deliberately simple and conservative',
         'Proof of Work consensus, ~10 minute block times',
-        'Solves the "someone regulates your currency" problem',
+        'Solves the \"someone regulates your currency\" problem',
       ],
     },
     right: {
@@ -84,7 +96,7 @@ const COMPARISONS: Comparison[] = [
         'Works like the master password to your vault — never share it',
         'Used to sign transactions and prove ownership of assets',
         'Whoever holds it controls the wallet — permanently',
-        'Lost key means lost funds; there is no "forgot password"',
+        'Lost key means lost funds; there is no \"forgot password\"',
       ],
     },
   },
@@ -118,13 +130,29 @@ export default function ConceptsPage() {
   return (
     <main>
       {/* Page hero */}
-      <section className="border-b">
-        <div className="mx-auto max-w-[1400px] px-5 py-16 md:px-8 md:py-24">
+      <section className="relative overflow-hidden border-b">
+        <div className="relative mx-auto max-w-[1400px] px-5 py-16 md:px-8 md:py-24">
           <FadeUp>
-            <span className="rounded-full border px-3 py-1 text-label text-muted-foreground">
+            <span className="rounded-full border bg-background px-3 py-1 text-label text-muted-foreground">
               02 — Reference
             </span>
           </FadeUp>
+
+          {/* Floating keyword tags */}
+          <FadeUp delay={0.15} className="mt-8 flex flex-wrap gap-2">
+            {HERO_TAGS.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border bg-background px-3 py-1 text-label text-muted-foreground"
+              >
+                {tag}
+              </span>
+            ))}
+          </FadeUp>
+
+          {/* Animated geometric graphic */}
+          <ConceptsHeroGraphic />
+
           <RevealLines
             as="h1"
             className="text-mega mt-6"
@@ -135,6 +163,37 @@ export default function ConceptsPage() {
               Four fundamental comparisons that unlock how Web3 actually works
               — explained side by side, in plain language.
             </p>
+          </FadeUp>
+
+          {/* Seminar highlight strip */}
+          <FadeUp delay={0.35} className="mt-10">
+            <div className="flex flex-wrap items-start gap-6 border-t pt-8">
+              <div className="flex-1 min-w-[200px]">
+                <span className="text-label text-accent">From the seminar</span>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  Covered at <span className="font-medium text-foreground">Arbitrum Builder Labs by Lampros DAO</span> — 
+                  from Web1 → Web2 → Web3 evolution, Ethereum as the &quot;World Computer,&quot; 
+                  to the cryptographic foundations of hashes, blocks, and key pairs.
+                </p>
+              </div>
+              <div className="flex-1 min-w-[200px]">
+                <span className="text-label text-accent">Key takeaway</span>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  Web2 relies on username/password and OAuth. Web3 replaces this entirely — 
+                  you authenticate by connecting a crypto wallet and signing with your 
+                  private key. <span className="font-medium text-foreground">No passwords, no middlemen.</span>
+                </p>
+              </div>
+              <div className="flex-1 min-w-[200px]">
+                <span className="text-label text-accent">Real-world examples</span>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  <span className="font-medium text-foreground">Uniswap</span> (decentralized exchange), 
+                  <span className="font-medium text-foreground"> Aave</span> (DeFi lending), and 
+                  <span className="font-medium text-foreground"> Ondo Finance</span> (real-world asset tokenization) — 
+                  all running autonomously on smart contracts.
+                </p>
+              </div>
+            </div>
           </FadeUp>
         </div>
       </section>

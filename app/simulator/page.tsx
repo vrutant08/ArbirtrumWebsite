@@ -1,12 +1,24 @@
 import type { Metadata } from 'next'
 import { RevealLines, FadeUp, StaggerGrid, StaggerItem } from '@/components/motion'
 import { BlockChain } from '@/components/simulator/block-chain'
+import { SimulatorHeroGraphic } from '@/components/hero-graphics'
 
 export const metadata: Metadata = {
   title: 'Block Simulator — Layered',
   description:
     'An interactive block mining simulator demonstrating hashing, nonces, proof-of-work, and chain immutability using SHA-256.',
 }
+
+const SIM_TAGS = [
+  'SHA-256',
+  'Nonce',
+  'Proof of Work',
+  'Immutability',
+  'Mining',
+  'Tamper-proof',
+  'Stylus / WASM',
+  'Rust',
+]
 
 const STEPS = [
   {
@@ -29,13 +41,29 @@ const STEPS = [
 export default function SimulatorPage() {
   return (
     <main>
-      <section className="border-b">
-        <div className="mx-auto max-w-[1400px] px-5 py-16 md:px-8 md:py-24">
+      <section className="relative overflow-hidden border-b">
+        <div className="relative mx-auto max-w-[1400px] px-5 py-16 md:px-8 md:py-24">
           <FadeUp>
-            <span className="rounded-full border px-3 py-1 text-label text-muted-foreground">
+            <span className="rounded-full border bg-background px-3 py-1 text-label text-muted-foreground">
               04 — Interactive
             </span>
           </FadeUp>
+
+          {/* Keyword tags */}
+          <FadeUp delay={0.15} className="mt-8 flex flex-wrap gap-2">
+            {SIM_TAGS.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border bg-background px-3 py-1 text-label text-muted-foreground"
+              >
+                {tag}
+              </span>
+            ))}
+          </FadeUp>
+
+          {/* Animated geometric graphic */}
+          <SimulatorHeroGraphic />
+
           <RevealLines
             as="h1"
             className="text-mega mt-6"
@@ -46,6 +74,38 @@ export default function SimulatorPage() {
               Hashing, nonces, and chain immutability — made tangible. Mine
               both blocks, then tamper with Block #1 and watch the chain break.
             </p>
+          </FadeUp>
+
+          {/* Seminar highlight strip */}
+          <FadeUp delay={0.35} className="mt-10">
+            <div className="flex flex-wrap items-start gap-6 border-t pt-8">
+              <div className="flex-1 min-w-[200px]">
+                <span className="text-label text-accent">Blockchain internals</span>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  A <span className="font-medium text-foreground">block</span> holds data, its own 
+                  <span className="font-medium text-foreground"> hash</span> (fingerprint), and a 
+                  <span className="font-medium text-foreground"> nonce</span> — the special number found 
+                  through trial-and-error mining so the hash starts with specific zeros.
+                </p>
+              </div>
+              <div className="flex-1 min-w-[200px]">
+                <span className="text-label text-accent">Arbitrum Stylus</span>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  Beyond Solidity, <span className="font-medium text-foreground">Stylus</span> lets you write smart contracts 
+                  in <span className="font-medium text-foreground">Rust, C, and C++</span> that compile to 
+                  <span className="font-medium text-foreground"> WebAssembly</span> — 10–100× faster execution and drastically 
+                  lower memory costs on-chain.
+                </p>
+              </div>
+              <div className="flex-1 min-w-[200px]">
+                <span className="text-label text-accent">Why Rust?</span>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  <span className="font-medium text-foreground">Memory safety without garbage collection.</span> Prevents 
+                  null pointer bugs at compile time. Blazing fast C/C++-level performance — 
+                  the language of choice for next-gen smart contracts.
+                </p>
+              </div>
+            </div>
           </FadeUp>
         </div>
       </section>
