@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 
@@ -15,14 +15,91 @@ export function Hero() {
   const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '18%'])
   const titleY = useTransform(scrollYProgress, [0, 1], ['0%', '-30%'])
 
+  const [preloaderComplete, setPreloaderComplete] = useState(false)
+
+  useEffect(() => {
+    let delayTimeout: NodeJS.Timeout
+
+    const handleComplete = () => {
+      delayTimeout = setTimeout(() => {
+        setPreloaderComplete(true)
+      }, 300) // Adjust this value (in milliseconds) to delay/accelerate entrance animations after preloader finishes
+    }
+    window.addEventListener('preloader-complete', handleComplete)
+
+    // Fallback safety to trigger entrance animations after 3.7s
+    const fallback = setTimeout(() => {
+      setPreloaderComplete(true)
+    }, 3050)
+
+    return () => {
+      window.removeEventListener('preloader-complete', handleComplete)
+      clearTimeout(delayTimeout)
+      clearTimeout(fallback)
+    }
+  }, [])
+
+  const titleContainerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2, // Animate as the preloader curtain rises
+      }
+    }
+  }
+
+  const titleChildVariants = {
+    hidden: { y: '110%' },
+    visible: {
+      y: '0%',
+      transition: { duration: 1.1, ease: EASE }
+    }
+  }
+
+  const tagsVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: 0.8, delay: 0.8 }
+    }
+  }
+
+  const descVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.9, ease: EASE, delay: 0.4 }
+    }
+  }
+
+  const buttonsVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.9, ease: EASE, delay: 0.55 }
+    }
+  }
+
+  const imageVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1.1, ease: EASE, delay: 0.6 }
+    }
+  }
+
   return (
     <section ref={ref} className="relative border-b">
       <div className="mx-auto max-w-[1400px] px-5 pt-14 md:px-8 md:pt-20">
         {/* Top meta row */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
+          initial="hidden"
+          animate={preloaderComplete ? 'visible' : 'hidden'}
+          variants={tagsVariants}
           className="mb-6 flex flex-wrap items-center gap-2"
         >
           {['Lampros DAO', 'Builder Labs', 'Web3 & Stylus'].map((tag) => (
@@ -36,14 +113,18 @@ export function Hero() {
         </motion.div>
 
         {/* Massive headline */}
-        <motion.div style={{ y: titleY }} className="relative z-10">
+        <motion.div
+          style={{ y: titleY }}
+          className="relative z-10"
+          initial="hidden"
+          animate={preloaderComplete ? 'visible' : 'hidden'}
+          variants={titleContainerVariants}
+        >
           <h1 className="text-mega">
             <span className="block overflow-hidden">
               <motion.span
                 className="block"
-                initial={{ y: '110%' }}
-                animate={{ y: '0%' }}
-                transition={{ duration: 1, ease: EASE, delay: 0.1 }}
+                variants={titleChildVariants}
               >
                 Builder
               </motion.span>
@@ -51,9 +132,7 @@ export function Hero() {
             <span className="block overflow-hidden">
               <motion.span
                 className="block pl-[8vw]"
-                initial={{ y: '110%' }}
-                animate={{ y: '0%' }}
-                transition={{ duration: 1, ease: EASE, delay: 0.22 }}
+                variants={titleChildVariants}
               >
                 Labs<span className="text-accent">.</span>
               </motion.span>
@@ -64,20 +143,20 @@ export function Hero() {
         {/* Sub row */}
         <div className="relative z-10 mt-8 flex flex-col justify-between gap-6 pb-10 md:mt-10 md:flex-row md:items-end md:pb-14">
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: EASE, delay: 0.5 }}
+            initial="hidden"
+            animate={preloaderComplete ? 'visible' : 'hidden'}
+            variants={descVariants}
             className="max-w-md text-pretty leading-relaxed text-muted-foreground"
           >
-            Welcome to the official portal for the Arbitrum Builder Labs seminar by Lampros DAO. 
-            We explored Web3 evolution, compiled Rust contracts via Stylus, and activated 
+            Welcome to the official portal for the Arbitrum Builder Labs seminar by Lampros DAO.
+            We explored Web3 evolution, compiled Rust contracts via Stylus, and activated
             university-based Builder Pods for real-world projects.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: EASE, delay: 0.65 }}
+            initial="hidden"
+            animate={preloaderComplete ? 'visible' : 'hidden'}
+            variants={buttonsVariants}
             className="flex items-center gap-3"
           >
             <Link
@@ -101,9 +180,9 @@ export function Hero() {
       {/* Hero image with parallax */}
       <div className="mx-auto max-w-[1400px] px-5 pb-14 md:px-8 md:pb-20">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, ease: EASE, delay: 0.4 }}
+          initial="hidden"
+          animate={preloaderComplete ? 'visible' : 'hidden'}
+          variants={imageVariants}
           className="img-zoom relative aspect-[16/8] overflow-hidden border"
         >
           <motion.img

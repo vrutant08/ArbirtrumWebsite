@@ -53,6 +53,7 @@ export function IntroPreloader() {
     const timer = setTimeout(() => {
       setLoading(false)
       document.body.style.overflow = ''
+      window.dispatchEvent(new Event('preloader-complete'))
     }, 2800) // 2.8s total duration
 
     return () => {

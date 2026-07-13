@@ -110,9 +110,8 @@ export default function HomePage() {
             {PROGRAM_OUTCOMES.map((item, i) => (
               <StaggerItem
                 key={item.label}
-                className={`flex flex-1 flex-col justify-center gap-2 p-5 md:p-12 ${
-                  i < PROGRAM_OUTCOMES.length - 1 ? 'border-b' : ''
-                }`}
+                className={`flex flex-1 flex-col justify-center gap-2 p-5 md:p-12 ${i < PROGRAM_OUTCOMES.length - 1 ? 'border-b' : ''
+                  }`}
               >
                 <div className="flex items-baseline justify-between">
                   <h3 className="text-display text-2xl uppercase md:text-3xl">
