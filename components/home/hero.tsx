@@ -27,10 +27,10 @@ export function Hero() {
     }
     window.addEventListener('preloader-complete', handleComplete)
 
-    // Fallback safety to trigger entrance animations after 3.7s
+    // Fallback safety to trigger entrance animations after 2.1s
     const fallback = setTimeout(() => {
       setPreloaderComplete(true)
-    }, 3050)
+    }, 2100)
 
     return () => {
       window.removeEventListener('preloader-complete', handleComplete)

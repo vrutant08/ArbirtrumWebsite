@@ -47,17 +47,24 @@ export function IntroPreloader() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    let unlockTimer: NodeJS.Timeout
+
     // Lock body scroll during preload loading
     document.body.style.overflow = 'hidden'
 
     const timer = setTimeout(() => {
       setLoading(false)
-      document.body.style.overflow = ''
       window.dispatchEvent(new Event('preloader-complete'))
-    }, 2800) // 2.8s total duration
+
+      // Delay releasing scroll lock until the curtain exit animation has fully completed (950ms)
+      unlockTimer = setTimeout(() => {
+        document.body.style.overflow = ''
+      }, 950)
+    }, 1700) // 1.7s total duration
 
     return () => {
       clearTimeout(timer)
+      clearTimeout(unlockTimer)
       document.body.style.overflow = ''
     }
   }, [])
@@ -73,10 +80,10 @@ export function IntroPreloader() {
         <motion.div
           initial={{ y: 0 }}
           exit={{ 
-            y: '-100%',
+            y: '-105%',
             transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } // Apple-style shutter ease
           }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#111111] select-none"
+          className="fixed inset-0 bottom-[-2vh] z-[9999] flex items-center justify-center bg-[#111111] select-none"
         >
           <div className="text-center px-6">
             <div className="font-mono text-xs uppercase tracking-widest text-[#f4f4f2]/75">

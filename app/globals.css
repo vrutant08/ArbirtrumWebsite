@@ -65,6 +65,8 @@
   }
   html {
     @apply bg-background;
+    -ms-overflow-style: none !important;  /* IE and Edge */
+    scrollbar-width: none !important;  /* Firefox */
   }
   body {
     @apply bg-background text-foreground font-sans;
@@ -73,6 +75,11 @@
     background: var(--accent);
     color: var(--accent-foreground);
   }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none !important;
 }
 
 @utility text-display {
